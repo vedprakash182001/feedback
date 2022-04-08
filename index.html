@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Interactive rating component</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./thank.html">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Rating state start -->
+
+  <div id="f">
+    <div id="ff">
+      <div id="fff"><img src="./images/icon-star.svg" alt="Error"></div>
+      <h2 id="ffs">How did we do?</h2>
+
+      <p id="ff4">Please let us know how we did with your support request. All feedback is appreciated
+        to help us improve our offering!</p>
+
+      <div id="ff5">
+        <p id="ff51" onmouseover="myfn3(this)" onmouseout="myfn4(this)" data-click="false" onclick="myfn6(this)">1</p>
+        <p id="ff52" onmouseover="myfn3(this)" onmouseout="myfn4(this)" data-click="false" onclick="myfn6(this)">2</p>
+        <p id="ff53" onmouseover="myfn3(this)" onmouseout="myfn4(this)" data-click="false" onclick="myfn6(this)">3</p>
+        <p id="ff54" onmouseover="myfn3(this)" onmouseout="myfn4(this)" data-click="false" onclick="myfn6(this)">4</p>
+        <p id="ff55" onmouseover="myfn3(this)" onmouseout="myfn4(this)" data-click="false" onclick="myfn6(this)">5</p>
+      </div>
+      <input id="btn" onmouseover="myfn1()" onmouseout="myfn2()" onclick="myfn5()" type="button" value="Submit">
+      <a href="thank.html" id="realbtn" style="display: none;">Subm23it</a>
+
+    </div>
+
+    <!-- 2nd page -->
+    <!-- <div id="2">
+  
+  You selected <!-- Add rating here out of 5
+
+  Thank you!
+
+  We appreciate you taking the time to give a rating. If you ever need more support, 
+  don’t hesitate to get in touch!
+</div> -->
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Ved Prakash</a>.
+  </div>
+  <script>
+    // function for rating number
+    function myfn3(a) {
+      a.style.backgroundColor = "hsl(25, 97%, 53%)";
+      a.style.color = "white";
+      if (a.previousElementSibling)
+
+        a.previousElementSibling.style.backgroundColor = "hsl(216, 12%, 54%)";
+      if (a.previousElementSibling)
+
+        a.previousElementSibling.style.color = "white"; 
+    }
+    function myfn4(a) {
+      let click = a.getAttribute("data-click")
+      if (click == "false") {
+        a.style.backgroundColor = "hsl(0, 0%, 2%)";
+        if (a.previousElementSibling)
+
+          a.previousElementSibling.style.backgroundColor = "hsl(0, 0%, 2%)";
+      }
+      else {
+        a.style.backgroundColor = "hsl(25, 97%, 53%)";
+        if (a.previousElementSibling)
+
+          a.previousElementSibling.style.backgroundColor = "hsl(0, 0%, 2%)";
+      }
+    }
+    //function for button
+    function myfn1() {
+      const x = document.getElementById('btn');
+      x.style.backgroundColor = "white";
+      x.style.color = "hsl(25, 97%, 53%)";
+    }
+    function myfn2() {
+      const y = document.getElementById('btn');
+      y.style.backgroundColor = "hsl(25, 97%, 53%)";
+      y.style.color = "white";
+    }
+    // next page
+    function myfn5() {
+      document.getElementById('realbtn').click();
+    }
+    function myfn6(a) {
+
+      const rate = a.innerText;
+      const x = document.getElementById('ff5');
+      for (let i = 0; i < 5; i++) {
+        x.children[i].setAttribute("data-click", false);
+        if (i == rate - 1) {
+          continue;
+        }
+
+        x.children[i].style.backgroundColor = "hsl(0, 0%, 2%)";
+      }
+      a.setAttribute("data-click", true);
+      if (a.previousElementSibling)
+        a.previousElementSibling.style.backgroundColor = "hsl(0, 0%, 2%)";
+      rate1 = JSON.stringify(rate);
+      localStorage.setItem("rating", rate1);
+
+
+    }
+  </script>
+</body>
+
+</html>
